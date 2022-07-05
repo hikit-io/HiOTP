@@ -16,6 +16,15 @@ struct PersistenceController {
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            let newOtpInfo = OtpInfo(context: viewContext)
+            newOtpInfo.email = "nieaowei@agora.io"
+            newOtpInfo.created = Date()
+            newOtpInfo.secret = "nieaowei"
+            newOtpInfo.digits = 6
+            newOtpInfo.period = 30
+            newOtpInfo.username = "123"
+            newOtpInfo.issuer = "Aliyun"
+            newOtpInfo.t0 = Int64(Date().timeIntervalSince1970)-15
         }
         do {
             try viewContext.save()

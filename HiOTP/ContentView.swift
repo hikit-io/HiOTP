@@ -12,43 +12,49 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \OtpInfo.created, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
-
+    private var otps: FetchedResults<OtpInfo>
+    
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+            OtpList()
+            .navigationTitle("HiOTP")
+#if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
+            .listStyle(.sidebar)
+#endif
+            .toolbar {
+                ToolbarItem(
+                    placement: .navigationBarLeading
+                ) {
+                    Button(action: addItem) {
+                        Label("Setting", systemImage: "gear")
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
+
                 ToolbarItem {
                     Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                        Label("Add", systemImage: "qrcode.viewfinder")
                     }
                 }
             }
-            Text("Select an item")
         }
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
 
+            let newOtpInfo = OtpInfo(context: viewContext)
+            newOtpInfo.email = "nieaowei@hikit.io"
+            newOtpInfo.created = Date()
+            newOtpInfo.secret = "nieaowei"
+            newOtpInfo.digits = 6
+            newOtpInfo.period = 30
+            newOtpInfo.username = "123"
+            newOtpInfo.issuer = "HiKit"
+            newOtpInfo.t0 = Int64(Date().timeIntervalSince1970)-15
+//            newOtpInfo.algorithm = "SHA256"
             do {
                 try viewContext.save()
             } catch {
@@ -62,7 +68,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+//            offsets.map { items[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -85,6 +91,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

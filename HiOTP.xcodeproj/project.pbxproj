@@ -8,22 +8,72 @@
 
 /* Begin PBXBuildFile section */
 		55217E95286F30D600086016 /* HiOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55217E94286F30D600086016 /* HiOTPApp.swift */; };
-		55217E97286F30D600086016 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55217E96286F30D600086016 /* Persistence.swift */; };
 		55217E9A286F30D600086016 /* HiOTP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55217E98286F30D600086016 /* HiOTP.xcdatamodeld */; };
 		55217E9C286F30D600086016 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55217E9B286F30D600086016 /* ContentView.swift */; };
 		55217E9E286F30D700086016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55217E9D286F30D700086016 /* Assets.xcassets */; };
 		55217EA2286F30D700086016 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55217EA1286F30D700086016 /* Preview Assets.xcassets */; };
+		5544EFD4287305AB00F12D37 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544EFD3287305AB00F12D37 /* Setting.swift */; };
+		5544EFD5287305AB00F12D37 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544EFD3287305AB00F12D37 /* Setting.swift */; };
+		5544EFD628731C6400F12D37 /* HiOTP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55217E98286F30D600086016 /* HiOTP.xcdatamodeld */; };
+		5544EFD928733AD500F12D37 /* SwiftOTP in Frameworks */ = {isa = PBXBuildFile; productRef = 5544EFD828733AD500F12D37 /* SwiftOTP */; };
+		55786B362872C42900507B8B /* SwiftOTP in Frameworks */ = {isa = PBXBuildFile; productRef = 55786B352872C42900507B8B /* SwiftOTP */; };
+		55899C7C2870202400540647 /* OtpList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7B2870202400540647 /* OtpList.swift */; };
+		55899C7D2870202400540647 /* OtpList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7B2870202400540647 /* OtpList.swift */; };
+		55899C7F28702BAD00540647 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7E28702BAD00540647 /* Persistence.swift */; };
+		55899C8028702BAD00540647 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7E28702BAD00540647 /* Persistence.swift */; };
+		55899C8728702C3200540647 /* HiOTP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55899C8528702C3200540647 /* HiOTP.xcdatamodeld */; };
+		55899C8828702C3200540647 /* HiOTP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55899C8528702C3200540647 /* HiOTP.xcdatamodeld */; };
+		55D3A875286F38E000E76BE8 /* HiOtpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3A874286F38E000E76BE8 /* HiOtpApp.swift */; };
+		55D3A877286F38E000E76BE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3A876286F38E000E76BE8 /* ContentView.swift */; };
+		55D3A879286F38E100E76BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D3A878286F38E100E76BE8 /* Assets.xcassets */; };
+		55D3A87C286F38E100E76BE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D3A87B286F38E100E76BE8 /* Preview Assets.xcassets */; };
+		55D3A87F286F38E100E76BE8 /* HiOTP.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 55D3A872286F38E000E76BE8 /* HiOTP.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55D3A8A5286F418B00E76BE8 /* OtpRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3A8A4286F418B00E76BE8 /* OtpRow.swift */; };
+		55D3A8A6286F418B00E76BE8 /* OtpRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3A8A4286F418B00E76BE8 /* OtpRow.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		55D3A87D286F38E100E76BE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55217E89286F30D600086016 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55D3A871286F38E000E76BE8;
+			remoteInfo = "HiOtp Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		55D3A880286F38E100E76BE8 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				55D3A87F286F38E100E76BE8 /* HiOTP.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		55217E91286F30D600086016 /* HiOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55217E94286F30D600086016 /* HiOTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiOTPApp.swift; sourceTree = "<group>"; };
-		55217E96286F30D600086016 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		55217E99286F30D600086016 /* HiOTP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiOTP.xcdatamodel; sourceTree = "<group>"; };
 		55217E9B286F30D600086016 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		55217E9D286F30D700086016 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55217E9F286F30D700086016 /* HiOTP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiOTP.entitlements; sourceTree = "<group>"; };
 		55217EA1286F30D700086016 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5544EFD3287305AB00F12D37 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		55899C7B2870202400540647 /* OtpList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpList.swift; sourceTree = "<group>"; };
+		55899C7E28702BAD00540647 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		55899C8628702C3200540647 /* HiOTP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiOTP.xcdatamodel; sourceTree = "<group>"; };
+		55D3A872286F38E000E76BE8 /* HiOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D3A874286F38E000E76BE8 /* HiOtpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiOtpApp.swift; sourceTree = "<group>"; };
+		55D3A876286F38E000E76BE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		55D3A878286F38E100E76BE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55D3A87B286F38E100E76BE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		55D3A8A4286F418B00E76BE8 /* OtpRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +81,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55786B362872C42900507B8B /* SwiftOTP in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55D3A86F286F38E000E76BE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5544EFD928733AD500F12D37 /* SwiftOTP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,7 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				55217E93286F30D600086016 /* HiOTP */,
+				55D3A873286F38E000E76BE8 /* HiOtp Watch App */,
 				55217E92286F30D600086016 /* Products */,
+				5544EFD728733AD500F12D37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				55217E91286F30D600086016 /* HiOTP.app */,
+				55D3A872286F38E000E76BE8 /* HiOTP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,12 +119,16 @@
 			isa = PBXGroup;
 			children = (
 				55217E94286F30D600086016 /* HiOTPApp.swift */,
-				55217E96286F30D600086016 /* Persistence.swift */,
 				55217E9B286F30D600086016 /* ContentView.swift */,
 				55217E9D286F30D700086016 /* Assets.xcassets */,
 				55217E9F286F30D700086016 /* HiOTP.entitlements */,
 				55217E98286F30D600086016 /* HiOTP.xcdatamodeld */,
 				55217EA0286F30D700086016 /* Preview Content */,
+				55D3A8A4286F418B00E76BE8 /* OtpRow.swift */,
+				55899C7B2870202400540647 /* OtpList.swift */,
+				55899C7E28702BAD00540647 /* Persistence.swift */,
+				5544EFD3287305AB00F12D37 /* Setting.swift */,
+				55899C8528702C3200540647 /* HiOTP.xcdatamodeld */,
 			);
 			path = HiOTP;
 			sourceTree = "<group>";
@@ -71,6 +137,32 @@
 			isa = PBXGroup;
 			children = (
 				55217EA1286F30D700086016 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5544EFD728733AD500F12D37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55D3A873286F38E000E76BE8 /* HiOtp Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				55D3A874286F38E000E76BE8 /* HiOtpApp.swift */,
+				55D3A876286F38E000E76BE8 /* ContentView.swift */,
+				55D3A878286F38E100E76BE8 /* Assets.xcassets */,
+				55D3A87A286F38E100E76BE8 /* Preview Content */,
+			);
+			path = "HiOtp Watch App";
+			sourceTree = "<group>";
+		};
+		55D3A87A286F38E100E76BE8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				55D3A87B286F38E100E76BE8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -85,14 +177,39 @@
 				55217E8D286F30D600086016 /* Sources */,
 				55217E8E286F30D600086016 /* Frameworks */,
 				55217E8F286F30D600086016 /* Resources */,
+				55D3A880286F38E100E76BE8 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55D3A87E286F38E100E76BE8 /* PBXTargetDependency */,
+			);
+			name = HiOTP;
+			packageProductDependencies = (
+				55786B352872C42900507B8B /* SwiftOTP */,
+			);
+			productName = HiOTP;
+			productReference = 55217E91286F30D600086016 /* HiOTP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		55D3A871286F38E000E76BE8 /* HiOtp Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55D3A883286F38E100E76BE8 /* Build configuration list for PBXNativeTarget "HiOtp Watch App" */;
+			buildPhases = (
+				55D3A86E286F38E000E76BE8 /* Sources */,
+				55D3A86F286F38E000E76BE8 /* Frameworks */,
+				55D3A870286F38E000E76BE8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HiOTP;
-			productName = HiOTP;
-			productReference = 55217E91286F30D600086016 /* HiOTP.app */;
+			name = "HiOtp Watch App";
+			packageProductDependencies = (
+				5544EFD828733AD500F12D37 /* SwiftOTP */,
+			);
+			productName = "HiOtp Watch App";
+			productReference = 55D3A872286F38E000E76BE8 /* HiOTP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,6 +225,9 @@
 					55217E90286F30D600086016 = {
 						CreatedOnToolsVersion = 14.0;
 					};
+					55D3A871286F38E000E76BE8 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 				};
 			};
 			buildConfigurationList = 55217E8C286F30D600086016 /* Build configuration list for PBXProject "HiOTP" */;
@@ -119,11 +239,15 @@
 				Base,
 			);
 			mainGroup = 55217E88286F30D600086016;
+			packageReferences = (
+				55786B342872C42900507B8B /* XCRemoteSwiftPackageReference "SwiftOTP" */,
+			);
 			productRefGroup = 55217E92286F30D600086016 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				55217E90286F30D600086016 /* HiOTP */,
+				55D3A871286F38E000E76BE8 /* HiOtp Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +262,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55D3A870286F38E000E76BE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55D3A87C286F38E100E76BE8 /* Preview Assets.xcassets in Resources */,
+				55D3A879286F38E100E76BE8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -146,13 +279,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				55217E95286F30D600086016 /* HiOTPApp.swift in Sources */,
+				55D3A8A5286F418B00E76BE8 /* OtpRow.swift in Sources */,
 				55217E9A286F30D600086016 /* HiOTP.xcdatamodeld in Sources */,
+				55899C8728702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
+				55899C7F28702BAD00540647 /* Persistence.swift in Sources */,
+				55899C7C2870202400540647 /* OtpList.swift in Sources */,
+				5544EFD4287305AB00F12D37 /* Setting.swift in Sources */,
 				55217E9C286F30D600086016 /* ContentView.swift in Sources */,
-				55217E97286F30D600086016 /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55D3A86E286F38E000E76BE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55D3A8A6286F418B00E76BE8 /* OtpRow.swift in Sources */,
+				55D3A877286F38E000E76BE8 /* ContentView.swift in Sources */,
+				55D3A875286F38E000E76BE8 /* HiOtpApp.swift in Sources */,
+				55899C7D2870202400540647 /* OtpList.swift in Sources */,
+				5544EFD5287305AB00F12D37 /* Setting.swift in Sources */,
+				55899C8828702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
+				5544EFD628731C6400F12D37 /* HiOTP.xcdatamodeld in Sources */,
+				55899C8028702BAD00540647 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55D3A87E286F38E100E76BE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55D3A871286F38E000E76BE8 /* HiOtp Watch App */;
+			targetProxy = 55D3A87D286F38E100E76BE8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		55217EA3286F30D700086016 /* Debug */ = {
@@ -205,11 +365,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
 			};
 			name = Debug;
 		};
@@ -257,19 +420,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
 			};
 			name = Release;
 		};
 		55217EA6286F30D700086016 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HiOTP/HiOTP.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HiOTP/Preview Content\"";
@@ -277,16 +445,18 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HiOTP;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.hikit.HiOTP;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hikit.otp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -299,9 +469,11 @@
 		55217EA7286F30D700086016 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HiOTP/HiOTP.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HiOTP/Preview Content\"";
@@ -309,22 +481,83 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HiOTP;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.hikit.HiOTP;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hikit.otp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		55D3A881286F38E100E76BE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HiOtp Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2Q8B34FN8L;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = io.hikit.otp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hikit.otp.watchkitapp;
+				PRODUCT_NAME = HiOTP;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		55D3A882286F38E100E76BE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HiOtp Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 2Q8B34FN8L;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = io.hikit.otp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hikit.otp.watchkitapp;
+				PRODUCT_NAME = HiOTP;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
 			};
 			name = Release;
 		};
@@ -349,7 +582,40 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		55D3A883286F38E100E76BE8 /* Build configuration list for PBXNativeTarget "HiOtp Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55D3A881286F38E100E76BE8 /* Debug */,
+				55D3A882286F38E100E76BE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		55786B342872C42900507B8B /* XCRemoteSwiftPackageReference "SwiftOTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lachlanbell/SwiftOTP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5544EFD828733AD500F12D37 /* SwiftOTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55786B342872C42900507B8B /* XCRemoteSwiftPackageReference "SwiftOTP" */;
+			productName = SwiftOTP;
+		};
+		55786B352872C42900507B8B /* SwiftOTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55786B342872C42900507B8B /* XCRemoteSwiftPackageReference "SwiftOTP" */;
+			productName = SwiftOTP;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		55217E98286F30D600086016 /* HiOTP.xcdatamodeld */ = {
@@ -358,6 +624,16 @@
 				55217E99286F30D600086016 /* HiOTP.xcdatamodel */,
 			);
 			currentVersion = 55217E99286F30D600086016 /* HiOTP.xcdatamodel */;
+			path = HiOTP.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		55899C8528702C3200540647 /* HiOTP.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				55899C8628702C3200540647 /* HiOTP.xcdatamodel */,
+			);
+			currentVersion = 55899C8628702C3200540647 /* HiOTP.xcdatamodel */;
 			path = HiOTP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
