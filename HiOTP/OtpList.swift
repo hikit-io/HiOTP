@@ -14,10 +14,18 @@ struct OtpList: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \OtpInfo.created, ascending: true)],
         animation: .default)
     private var items: FetchedResults<OtpInfo>
+    
+    private var onItemClick:()->Void
+    
+    init(onItemClick:@escaping ()->Void) {
+        self.onItemClick = onItemClick
+    }
     var body: some View {
         List{
             ForEach(items){otp in
-                OtpRow(otpInfo: otp)
+                OtpRow(otpInfo: otp) {
+                    onItemClick()
+                }
             }
         }
 #if os(iOS)
@@ -28,7 +36,9 @@ struct OtpList: View {
 
 struct OtpList_Previews: PreviewProvider {
     static var previews: some View {
-        OtpList()
+        OtpList(onItemClick: {
+            
+        })
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

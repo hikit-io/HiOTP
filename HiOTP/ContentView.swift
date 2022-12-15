@@ -7,44 +7,71 @@
 
 import SwiftUI
 import CoreData
+#if canImport(AlertToast)
+import AlertToast
+#endif
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
+    @State private var showToast = false
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \OtpInfo.created, ascending: true)],
         animation: .default)
     private var otps: FetchedResults<OtpInfo>
     
     var body: some View {
-        NavigationView {
-            OtpList()
-            .navigationTitle("HiOTP")
+        NavigationSplitView(sidebar: {
+            OtpList(onItemClick: {
+                showToast = true
+            })
+                .navigationTitle("HiOTP")
 #if os(iOS)
-            .navigationBarTitleDisplayMode(.inline)
-            .listStyle(.sidebar)
+                .navigationBarTitleDisplayMode(.inline)
+                .listStyle(.sidebar)
 #endif
-            .toolbar {
-                ToolbarItem(
-                    placement: .navigationBarLeading
-                ) {
-                    Button(action: addItem) {
-                        Label("Setting", systemImage: "gear")
+                .toolbar {
+                    ToolbarItem(
+                        placement: {
+#if os(iOS)
+                            return .navigationBarLeading
+#endif
+                            return .automatic
+                        }()
+                    ) {
+                        Button(action: {
+                            NavigationLink("Setting", destination: Setting())
+                        }) {
+                            Label("Setting", systemImage: "gear")
+                        }
                     }
-                }
-
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add", systemImage: "qrcode.viewfinder")
+#if os(iOS)
+                    ToolbarItem {
+                        Button(action: addItem) {
+                            Label("Add", systemImage: "qrcode.viewfinder")
+                        }
                     }
+#endif
                 }
-            }
+        }, content: {
+            
+        }, detail: {
+            
+        })
+#if os(iOS)
+        .toast(isPresenting: $showToast) {
+            AlertToast(type: .regular, title: "Copy success")
         }
-    }
+#endif
+//        {
 
+//        }
+    }
+    
     private func addItem() {
         withAnimation {
-
+            
             let newOtpInfo = OtpInfo(context: viewContext)
             newOtpInfo.email = "nieaowei@hikit.io"
             newOtpInfo.created = Date()
@@ -54,7 +81,7 @@ struct ContentView: View {
             newOtpInfo.username = "123"
             newOtpInfo.issuer = "HiKit"
             newOtpInfo.t0 = Int64(Date().timeIntervalSince1970)-15
-//            newOtpInfo.algorithm = "SHA256"
+            //            newOtpInfo.algorithm = "SHA256"
             do {
                 try viewContext.save()
             } catch {
@@ -65,11 +92,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            //            offsets.map { items[$0] }.forEach(viewContext.delete)
+            
             do {
                 try viewContext.save()
             } catch {
