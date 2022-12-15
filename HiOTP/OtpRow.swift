@@ -21,6 +21,7 @@ struct OtpRow: View {
    
     @State private var interval = 30;
    
+    @State private var lasttime = 0;
     
     init(otpInfo: OtpInfo) {
         self.otpInfo = otpInfo
@@ -53,8 +54,11 @@ struct OtpRow: View {
                 .foregroundColor(.blue)
                 .onReceive(timer, perform: {
                     time in
-                        if(interval==otpInfo.period){
-                            number = (self.totp.generate(secondsPast1970:  Int(Date().timeIntervalSince1970)))!
+                        var now = Int(Date().timeIntervalSince1970)
+                        if(interval==otpInfo.period || lasttime < now){
+                            
+                            number = (self.totp.generate(secondsPast1970: now ))!
+                            lasttime = now
                         }
                     
                 })
@@ -66,11 +70,12 @@ struct OtpRow: View {
                     .foregroundColor(.gray)
                     .onReceive(timer, perform: {
                         time in
-                            if(interval == 0){
-                                interval = Int(otpInfo.period)
-                            }else{
-                                interval-=1
-                            }
+                        interval = Int(otpInfo.period) -  Int(Date().timeIntervalSince1970) % Int(otpInfo.period)
+//                            if(interval == 0){
+//                                interval = Int(otpInfo.period)
+//                            }else{
+//                                interval-=1
+//                            }
                     })
             }
         }.padding(.all)
