@@ -32,7 +32,9 @@ struct OtpRow: View {
     
     private var onClick:()->Void
     
-    init(otpInfo: OtpInfo,onClick:@escaping ()->Void) {
+    @Binding private var  tick:Int64;
+    
+    init(otpInfo: OtpInfo,tick:Binding<Int64>,onClick:@escaping ()->Void) {
         self.otpInfo = otpInfo
         print(otpInfo.secret!)
         
@@ -45,16 +47,15 @@ struct OtpRow: View {
         
         _number = State(initialValue: (self.totp.generate(secondsPast1970: Int(now)))!)
         
+        _tick = tick
+        
         self.onClick = onClick
     }
-    
-    let timer = Timer.publish(every: 1, tolerance: 0, on: .main, in: .common).autoconnect()
-    
     
     var body: some View {
         VStack(alignment: .leading){
             HStack{
-                Text(otpInfo.issuer!).font(.title3)
+                Text(otpInfo.issuer ?? "").font(.title3)
                 Spacer()
                 Text("2021/02/02 10:48")
                     .font(.footnote)
@@ -63,26 +64,12 @@ struct OtpRow: View {
             Text(number)
                 .font(.largeTitle)
                 .foregroundColor(.blue)
-                .onReceive(timer, perform: {
-                    time in
-                    let now = Int(Date().timeIntervalSince1970)
-                    if(interval==otpInfo.period || lasttime < now){
-                        
-                        number = (self.totp.generate(secondsPast1970: now ))!
-                        lasttime = now
-                    }
-                    
-                })
             HStack{
-                Text(otpInfo.email!)
+                Text(otpInfo.email ?? "")
                     .foregroundColor(.gray)
                 Spacer()
                 Text(interval.formatted()+"s")
                     .foregroundColor(.gray)
-                    .onReceive(timer, perform: {
-                        time in
-                        interval = Int(otpInfo.period) -  Int(Date().timeIntervalSince1970) % Int(otpInfo.period)
-                    })
             }
         }
         .padding(.all)
@@ -96,26 +83,30 @@ struct OtpRow: View {
             NSPasteboard.general.setString(number, forType: .string)
 #endif
             self.onClick()
+        }.onChange(of: tick) { newValue in
+            let now = Int(Date().timeIntervalSince1970)
+            number = (self.totp.generate(secondsPast1970: now ))!
+            interval = Int(otpInfo.period) - now % Int(otpInfo.period)
         }
-        
     }
     
 }
 
-struct OtpRow_Previews: PreviewProvider {
-    
-    
-    
-    static var previews: some View {
-        OtpRow(otpInfo: OtpInfo()) {
-            
-        }
-    }
-    
-    func getOtp()->OtpInfo{
-        let opt = OtpInfo()
-        opt.username = "123"
-        opt.created = Date()
-        return opt
-    }
-}
+//struct OtpRow_Previews: PreviewProvider {
+
+
+//
+//    static var previews: some View {
+//
+//        OtpRow(otpInfo: OtpInfo(),refersh: true) {
+//
+//        }
+//    }
+//
+//    func getOtp()->OtpInfo{
+//        let opt = OtpInfo()
+//        opt.username = "123"
+//        opt.created = Date()
+//        return opt
+//    }
+//}

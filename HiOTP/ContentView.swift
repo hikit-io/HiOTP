@@ -22,51 +22,62 @@ struct ContentView: View {
     private var otps: FetchedResults<OtpInfo>
     
     var body: some View {
-        NavigationSplitView(sidebar: {
+#if os(iOS)
+        NavigationStack{
             OtpList(onItemClick: {
                 showToast = true
             })
-                .navigationTitle("HiOTP")
-#if os(iOS)
-                .navigationBarTitleDisplayMode(.inline)
-                .listStyle(.sidebar)
-#endif
-                .toolbar {
-                    ToolbarItem(
-                        placement: {
-#if os(iOS)
-                            return .navigationBarLeading
-#endif
-                            return .automatic
-                        }()
-                    ) {
-                        Button(action: {
-                            NavigationLink("Setting", destination: Setting())
-                        }) {
-                            Label("Setting", systemImage: "gear")
-                        }
+            .navigationTitle("Hi OTP")
+            .navigationBarTitleDisplayMode(.inline)
+            .listStyle(.sidebar)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink {
+                        Setting()
+                    } label: {
+                        Label("Setting", systemImage: "gear")
                     }
-#if os(iOS)
-                    ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add", systemImage: "qrcode.viewfinder")
-                        }
-                    }
-#endif
                 }
+                ToolbarItem {
+                    Button(action: addItem) {
+                        Label("Add", systemImage: "qrcode.viewfinder")
+                    }
+                }
+            }
+        }.toast(isPresenting: $showToast) {
+            AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
+        }
+        
+#elseif os(macOS)
+        NavigationSplitView(sidebar: {
+            List {
+                NavigationLink {
+                    OtpList(onItemClick: {
+                        showToast = true
+                    })
+                } label: {
+                    Text("Home")
+                }
+                NavigationLink {
+                    Setting()
+                } label: {
+                    Text("Setting")
+                }
+            }
+            
+            
         }, content: {
             
         }, detail: {
             
-        })
-#if os(iOS)
-        .toast(isPresenting: $showToast) {
-            AlertToast(type: .regular, title: "Copy success")
+        }).toast(isPresenting: $showToast) {
+            AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
         }
+        
 #endif
-//        {
-
-//        }
+        
+        
+        
     }
     
     private func addItem() {

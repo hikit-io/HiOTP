@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15988D0A294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
+		15988D0B294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
 		15DFDF92294BDBD1003B327B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 15DFDF91294BDBD1003B327B /* AlertToast */; };
 		15E1C5C2294BC76A009A293A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 15E1C5C1294BC76A009A293A /* README.md */; };
 		55217E95286F30D600086016 /* HiOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55217E94286F30D600086016 /* HiOTPApp.swift */; };
@@ -59,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15988D09294FA26D00A497FD /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		15E1C5C1294BC76A009A293A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		55217E91286F30D600086016 /* HiOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55217E94286F30D600086016 /* HiOTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiOTPApp.swift; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 				55899C7E28702BAD00540647 /* Persistence.swift */,
 				5544EFD3287305AB00F12D37 /* Setting.swift */,
 				55899C8528702C3200540647 /* HiOTP.xcdatamodeld */,
+				15988D09294FA26D00A497FD /* Privacy.swift */,
 			);
 			path = HiOTP;
 			sourceTree = "<group>";
@@ -291,6 +295,7 @@
 				55217E9A286F30D600086016 /* HiOTP.xcdatamodeld in Sources */,
 				55899C8728702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
 				55899C7F28702BAD00540647 /* Persistence.swift in Sources */,
+				15988D0A294FA26D00A497FD /* Privacy.swift in Sources */,
 				55899C7C2870202400540647 /* OtpList.swift in Sources */,
 				5544EFD4287305AB00F12D37 /* Setting.swift in Sources */,
 				55217E9C286F30D600086016 /* ContentView.swift in Sources */,
@@ -306,6 +311,7 @@
 				55D3A875286F38E000E76BE8 /* HiOtpApp.swift in Sources */,
 				55899C7D2870202400540647 /* OtpList.swift in Sources */,
 				5544EFD5287305AB00F12D37 /* Setting.swift in Sources */,
+				15988D0B294FA26D00A497FD /* Privacy.swift in Sources */,
 				55899C8828702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
 				5544EFD628731C6400F12D37 /* HiOTP.xcdatamodeld in Sources */,
 				55899C8028702BAD00540647 /* Persistence.swift in Sources */,
