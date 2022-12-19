@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		15988D0A294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
 		15988D0B294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
+		15988D0E29508AC100A497FD /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D0D29508AC100A497FD /* Export.swift */; };
 		15DFDF92294BDBD1003B327B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 15DFDF91294BDBD1003B327B /* AlertToast */; };
 		15E1C5C2294BC76A009A293A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 15E1C5C1294BC76A009A293A /* README.md */; };
 		55217E95286F30D600086016 /* HiOTPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55217E94286F30D600086016 /* HiOTPApp.swift */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		15988D09294FA26D00A497FD /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
+		15988D0C294FAED900A497FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		15988D0D29508AC100A497FD /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
 		15E1C5C1294BC76A009A293A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		55217E91286F30D600086016 /* HiOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55217E94286F30D600086016 /* HiOTPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiOTPApp.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		55217E93286F30D600086016 /* HiOTP */ = {
 			isa = PBXGroup;
 			children = (
+				15988D0C294FAED900A497FD /* Info.plist */,
 				55217E94286F30D600086016 /* HiOTPApp.swift */,
 				55217E9B286F30D600086016 /* ContentView.swift */,
 				55217E9D286F30D700086016 /* Assets.xcassets */,
@@ -138,6 +142,7 @@
 				5544EFD3287305AB00F12D37 /* Setting.swift */,
 				55899C8528702C3200540647 /* HiOTP.xcdatamodeld */,
 				15988D09294FA26D00A497FD /* Privacy.swift */,
+				15988D0D29508AC100A497FD /* Export.swift */,
 			);
 			path = HiOTP;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 55217E88286F30D600086016;
 			packageReferences = (
@@ -295,6 +301,7 @@
 				55217E9A286F30D600086016 /* HiOTP.xcdatamodeld in Sources */,
 				55899C8728702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
 				55899C7F28702BAD00540647 /* Persistence.swift in Sources */,
+				15988D0E29508AC100A497FD /* Export.swift in Sources */,
 				15988D0A294FA26D00A497FD /* Privacy.swift in Sources */,
 				55899C7C2870202400540647 /* OtpList.swift in Sources */,
 				5544EFD4287305AB00F12D37 /* Setting.swift in Sources */,
@@ -464,6 +471,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HiOTP/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HiOTP;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -503,6 +511,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HiOTP/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HiOTP;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -549,7 +558,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -579,7 +588,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

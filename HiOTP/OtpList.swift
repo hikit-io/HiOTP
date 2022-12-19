@@ -9,7 +9,9 @@ import SwiftUI
 import CoreData
 
 struct OtpList: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \OtpInfo.created, ascending: true)],
         animation: .default)

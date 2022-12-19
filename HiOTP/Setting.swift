@@ -11,12 +11,13 @@ struct Setting: View {
     @State private var onIcloud = false;
     var body: some View {
         Form{
+#if os(iOS)
             Section(header: Text("Data")){
                 Toggle(isOn: $onIcloud){
                     Label("iCloud同步", systemImage: "icloud")
                 }.buttonStyle(.plain)
                 NavigationLink {
-                    Privacy()
+                    Export()
                 } label: {
                     Label("导出为二维码", systemImage: "qrcode")
                 }
@@ -24,6 +25,7 @@ struct Setting: View {
                     Label("同步至手表", systemImage: "applewatch")
                 }.buttonStyle(.plain)
             }
+#endif
             
             Section(header: Text("Info")){
                 

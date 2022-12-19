@@ -22,7 +22,7 @@ struct ContentView: View {
     private var otps: FetchedResults<OtpInfo>
     
     var body: some View {
-#if os(iOS)
+#if os(iOS) || os(watchOS)
         NavigationStack{
             OtpList(onItemClick: {
                 showToast = true

@@ -12,10 +12,6 @@ import SwiftOTP
 import UIKit
 #endif
 
-#if canImport(AlertToast)
-import AlertToast
-#endif
-
 struct OtpRow: View {
     
     private var otpInfo:OtpInfo;
