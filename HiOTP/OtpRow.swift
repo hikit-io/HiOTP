@@ -32,7 +32,6 @@ struct OtpRow: View {
     
     init(otpInfo: OtpInfo,tick:Binding<Int64>,onClick:@escaping ()->Void) {
         self.otpInfo = otpInfo
-        print(otpInfo.secret!)
         
         self.secret = otpInfo.secret!.base32DecodedData!
         
@@ -49,6 +48,7 @@ struct OtpRow: View {
     }
     
     var body: some View {
+        
         VStack(alignment: .leading){
             HStack{
                 Text(otpInfo.issuer ?? "").font(.title3)
@@ -68,11 +68,11 @@ struct OtpRow: View {
                     .foregroundColor(.gray)
             }
         }
-        .padding(.all)
+        .contentShape(Rectangle())
+        .padding(.all,5)
         .onTapGesture {
 #if os(iOS)
             UIPasteboard.general.string = number
-            
 #endif
 #if os(macOS)
             NSPasteboard.general.clearContents()
@@ -84,25 +84,42 @@ struct OtpRow: View {
             number = (self.totp.generate(secondsPast1970: now ))!
             interval = Int(otpInfo.period) - now % Int(otpInfo.period)
         }
+
     }
     
 }
-
+//
 //struct OtpRow_Previews: PreviewProvider {
-
-
 //
-//    static var previews: some View {
 //
-//        OtpRow(otpInfo: OtpInfo(),refersh: true) {
+//    struct OtpRowPreview: View{
+//        @State var tick:Int64 = 0
 //
+//        var body: some View{
+//            OtpRow(otpInfo: OtpRow_Previews.getOtp(), tick: $tick, onClick: {})
 //        }
 //    }
 //
-//    func getOtp()->OtpInfo{
+//    static var previews: some View {
+//        OtpRowPreview()
+//    }
+//
+//    static func getOtp()->OtpInfo{
 //        let opt = OtpInfo()
 //        opt.username = "123"
 //        opt.created = Date()
 //        return opt
 //    }
 //}
+
+struct OtpDetail:View{
+    private var otp:OtpInfo
+    
+    init(otp: OtpInfo) {
+        self.otp = otp
+    }
+    
+    var body: some View{
+        Text(verbatim: otp.email ?? "")
+    }
+}
