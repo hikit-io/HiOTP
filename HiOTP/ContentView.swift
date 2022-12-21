@@ -63,7 +63,7 @@ struct ContentView: View {
         
         .sheet(isPresented: $showScan) {
             NavigationStack{
-                CodeScannerView(codeTypes: [.qr], scanMode: .continuous,manualSelect: true, showViewfinder: true, simulatedData: "Paul Hudson") { response in
+                CodeScannerView(codeTypes: [.qr], scanMode: .continuous,manualSelect: true, showViewfinder: true, simulatedData: "Debug") { response in
                     switch response {
                     case .success(let result):
                         if result.string != "hh"{
@@ -74,7 +74,7 @@ struct ContentView: View {
                     case .failure(let error):
                         print(error.localizedDescription)
                     }
-                }.navigationTitle(Text("扫描二维码"))
+                }.navigationTitle(Text("scan_qrcode"))
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("二维码有误"),message: Text("asd   "),dismissButton: .cancel())
@@ -89,7 +89,7 @@ struct ContentView: View {
                         showToast = true
                     })
                 } label: {
-                    Text("Home")
+                    Text("nav_home")
                 }
             }
         },content: {
@@ -100,7 +100,7 @@ struct ContentView: View {
         },detail: {
             OtpMain()
         }).toast(isPresenting: $showToast) {
-            AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
+            AlertToast(displayMode:.alert,type: .regular, title: LocalizedStringKey("copy_success"))
         }
 #else
         NavigationStack{

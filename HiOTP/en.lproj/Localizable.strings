@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  HiOTP
+
+  Created by Nekilc on 2022/12/21.
+  
+*/
+
+setting_version = "Version";
+setting_common = "Common";
+setting_privacy = "Privacy";
+setting_copyright = "Copyright";
+setting_menu_bar = "Display on menu bar";
+setting_data = "Data";
+setting_about = "About";
+setting_export_qrcode = "Export as QRCode";
+setting_export_sync_watch = "Sync to watch";
+setting_icloud_sync = "Sync iCloud";
+
+scan_qrcode = "Scan QRCode";
+qrcode = "QRCode";
+nav_home = "Home";
+
+ctx_menu_as_main_screen = "Set to main screen";
+
+copy_success = "Copy success";

@@ -33,7 +33,7 @@ struct OtpRow: View {
     init(otpInfo: OtpInfo,tick:Binding<Int64>,onClick:@escaping ()->Void) {
         self.otpInfo = otpInfo
         
-        self.secret = otpInfo.secret!.base32DecodedData!
+        self.secret = (otpInfo.secret ?? "").base32DecodedData ?? Data()
         
         self.totp = TOTP(secret: self.secret, digits: Int(otpInfo.digits), timeInterval: Int(otpInfo.period), algorithm: .sha1)!
         let now = Int32(Date().timeIntervalSince1970)
@@ -58,17 +58,16 @@ struct OtpRow: View {
     struct IssuerTime:View{
         var issuer:String
         var body: some View{
-#if !os(watchOS)
             HStack{
+
                 Text(issuer).font(.title3)
                 Spacer()
+#if !os(watchOS)
                 Text("2021/02/02 10:48")
                     .font(.footnote)
                     .foregroundColor(.gray)
-            }
-#else
-            EmptyView()
 #endif
+            }
         }
         
     }

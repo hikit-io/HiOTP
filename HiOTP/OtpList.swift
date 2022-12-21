@@ -74,11 +74,9 @@ struct OtpList: View {
     }
     
 #if os(iOS)
-    //        let listColor = Color(uiColor: .tertiarySystemBackground)
     let separatorColor = Color(uiColor: .separator)
     let listStyle:GroupedListStyle = GroupedListStyle()
 #elseif os(macOS)
-    //        let listColor = Color(nsColor: .textBackgroundColor)
     let separatorColor = Color(nsColor: .systemGray)
     let listStyle:PlainListStyle = PlainListStyle()
 #else
@@ -100,7 +98,6 @@ struct OtpList: View {
     }
     
     var body: some View {
-        
         List{
             ForEach(items){otp in
                 OtpRow(otpInfo: otp,tick: $tick) {
@@ -112,12 +109,12 @@ struct OtpList: View {
                         showQrSheet = true
                         qrSheetData = otp.secret ?? ""
                     } label: {
-                        Label("二维码", systemImage: "qrcode")
+                        Label("qrcode", systemImage: "qrcode")
                     }.tint(.blue)
                 }
 #if os(macOS)
                 .contextMenu {
-                    Button("设置为主屏", action: {})
+                    Button("ctx_menu_as_main_screen", action: {})
                 }
 #endif
 #if os(iOS) || os(macOS)
@@ -163,7 +160,7 @@ struct OtpList: View {
                     Image
                         .resizable()
                         .scaledToFit()
-                        .navigationTitle(Text("二维码"))
+                        .navigationTitle(Text("qrcode"))
                         .frame(minWidth: 100,minHeight: 100)
                 })
             )

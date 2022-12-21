@@ -10,53 +10,65 @@ import SwiftUI
 struct Setting: View {
     
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
-    
+    @AppStorage("debugHidden") private var debugHidden = true;
     
     @State private var onIcloud = false;
     var body: some View {
 #if os(iOS)
         Form{
-            Section(header: Text("Data")){
+            Section(header: Text("setting_data")){
                 Toggle(isOn: $onIcloud){
-                    Label("iCloud同步", systemImage: "icloud")
+                    Label("setting_icloud_sync", systemImage: "icloud")
                 }.buttonStyle(.plain)
                 NavigationLink {
                     Export()
                 } label: {
-                    Label("导出为二维码", systemImage: "qrcode")
+                    Label("setting_export_qrcode", systemImage: "qrcode")
                 }
                 Button(action: onButton) {
-                    Label("同步至手表", systemImage: "applewatch")
+                    Label("setting_export_sync_watch", systemImage: "applewatch")
                 }.buttonStyle(.plain)
             }
-            Section(header: Text("Info")){
+            Section(header: Text("setting_about")){
                 HStack{
-                    Text("版本")
+                    Text("setting_version")
                     Spacer()
                     Text("0.0.1").foregroundColor(.gray)
+                }.onTapGesture(count:5) {
+                    debugHidden = false
                 }
-                NavigationLink("隐私协议") {
+                NavigationLink("setting_privacy") {
                     Privacy()
                 }
-                NavigationLink("版权声明") {
+                NavigationLink("setting_copyright") {
                     Privacy()
+                }
+                if !debugHidden{
+                    NavigationLink("Debug") {
+                        Debug()
+                    }
                 }
             }
         }
         
 #elseif os(macOS)
         TabView {
-            Toggle("在状态栏中显示", isOn: $showMenuBarExtra)
+            Toggle("setting_display_on_menu_bar", isOn: $showMenuBarExtra)
                 .tabItem {
-                    Label("通用", systemImage: "circle")
+                    Label("setting_common", systemImage: "circle")
                 }
         }
 #else
         Form{
-            NavigationLink("隐私协议") {
+            HStack{
+                Text("setting_version")
+                Spacer()
+                Text("0.0.1").foregroundColor(.gray)
+            }
+            NavigationLink("setting_privacy") {
                 Privacy()
             }
-            NavigationLink("版权声明") {
+            NavigationLink("setting_copyright") {
                 Privacy()
             }
         }

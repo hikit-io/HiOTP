@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159196BB2952EFD600FBB86B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 159196BE2952EFD600FBB86B /* Localizable.strings */; };
+		159196BC2952EFD600FBB86B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 159196BE2952EFD600FBB86B /* Localizable.strings */; };
+		159196C42952FA3600FBB86B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C32952FA3600FBB86B /* Debug.swift */; };
+		159196C52952FA3600FBB86B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C32952FA3600FBB86B /* Debug.swift */; };
+		159196C72952FAA100FBB86B /* AddOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C62952FAA100FBB86B /* AddOtp.swift */; };
+		159196C82952FAA100FBB86B /* AddOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C62952FAA100FBB86B /* AddOtp.swift */; };
+		159196CA2952FF5200FBB86B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C92952FF5200FBB86B /* Model.swift */; };
+		159196CB2952FF5200FBB86B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C92952FF5200FBB86B /* Model.swift */; };
 		15988D0A294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
 		15988D0B294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
 		15988D0E29508AC100A497FD /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D0D29508AC100A497FD /* Export.swift */; };
@@ -32,8 +40,6 @@
 		55899C7D2870202400540647 /* OtpList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7B2870202400540647 /* OtpList.swift */; };
 		55899C7F28702BAD00540647 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7E28702BAD00540647 /* Persistence.swift */; };
 		55899C8028702BAD00540647 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55899C7E28702BAD00540647 /* Persistence.swift */; };
-		55899C8728702C3200540647 /* HiOTP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55899C8528702C3200540647 /* HiOTP.xcdatamodeld */; };
-		55899C8828702C3200540647 /* HiOTP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55899C8528702C3200540647 /* HiOTP.xcdatamodeld */; };
 		55D3A875286F38E000E76BE8 /* HiOtpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3A874286F38E000E76BE8 /* HiOtpApp.swift */; };
 		55D3A879286F38E100E76BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D3A878286F38E100E76BE8 /* Assets.xcassets */; };
 		55D3A87C286F38E100E76BE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D3A87B286F38E100E76BE8 /* Preview Assets.xcassets */; };
@@ -67,6 +73,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		159196BD2952EFD600FBB86B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		159196BF2952EFDD00FBB86B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		159196C32952FA3600FBB86B /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		159196C62952FAA100FBB86B /* AddOtp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtp.swift; sourceTree = "<group>"; };
+		159196C92952FF5200FBB86B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		15988D09294FA26D00A497FD /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		15988D0C294FAED900A497FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		15988D0D29508AC100A497FD /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
@@ -83,7 +94,6 @@
 		5544EFD3287305AB00F12D37 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		55899C7B2870202400540647 /* OtpList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpList.swift; sourceTree = "<group>"; };
 		55899C7E28702BAD00540647 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		55899C8628702C3200540647 /* HiOTP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HiOTP.xcdatamodel; sourceTree = "<group>"; };
 		55D3A872286F38E000E76BE8 /* HiOTP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiOTP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D3A874286F38E000E76BE8 /* HiOtpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiOtpApp.swift; sourceTree = "<group>"; };
 		55D3A878286F38E100E76BE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +149,7 @@
 		55217E93286F30D600086016 /* HiOTP */ = {
 			isa = PBXGroup;
 			children = (
+				159196C32952FA3600FBB86B /* Debug.swift */,
 				15988D0C294FAED900A497FD /* Info.plist */,
 				55217E94286F30D600086016 /* HiOTPApp.swift */,
 				55217E9B286F30D600086016 /* ContentView.swift */,
@@ -148,12 +159,14 @@
 				55217EA0286F30D700086016 /* Preview Content */,
 				55D3A8A4286F418B00E76BE8 /* OtpRow.swift */,
 				55899C7B2870202400540647 /* OtpList.swift */,
+				159196BE2952EFD600FBB86B /* Localizable.strings */,
 				55899C7E28702BAD00540647 /* Persistence.swift */,
 				5544EFD3287305AB00F12D37 /* Setting.swift */,
-				55899C8528702C3200540647 /* HiOTP.xcdatamodeld */,
+				159196C62952FAA100FBB86B /* AddOtp.swift */,
 				15988D09294FA26D00A497FD /* Privacy.swift */,
 				15988D0D29508AC100A497FD /* Export.swift */,
 				15F7E52129519D1900C32E6E /* OtpMain.swift */,
+				159196C92952FF5200FBB86B /* Model.swift */,
 			);
 			path = HiOTP;
 			sourceTree = "<group>";
@@ -291,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E1C5C2294BC76A009A293A /* README.md in Resources */,
+				159196BB2952EFD600FBB86B /* Localizable.strings in Resources */,
 				55217EA2286F30D700086016 /* Preview Assets.xcassets in Resources */,
 				55217E9E286F30D700086016 /* Assets.xcassets in Resources */,
 			);
@@ -301,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55D3A87C286F38E100E76BE8 /* Preview Assets.xcassets in Resources */,
+				159196BC2952EFD600FBB86B /* Localizable.strings in Resources */,
 				55D3A879286F38E100E76BE8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,10 +328,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				55217E95286F30D600086016 /* HiOTPApp.swift in Sources */,
+				159196C42952FA3600FBB86B /* Debug.swift in Sources */,
 				55D3A8A5286F418B00E76BE8 /* OtpRow.swift in Sources */,
 				55217E9A286F30D600086016 /* HiOTP.xcdatamodeld in Sources */,
-				55899C8728702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
 				15F7E52229519D1900C32E6E /* OtpMain.swift in Sources */,
+				159196C72952FAA100FBB86B /* AddOtp.swift in Sources */,
+				159196CA2952FF5200FBB86B /* Model.swift in Sources */,
 				55899C7F28702BAD00540647 /* Persistence.swift in Sources */,
 				15988D0E29508AC100A497FD /* Export.swift in Sources */,
 				15988D0A294FA26D00A497FD /* Privacy.swift in Sources */,
@@ -330,13 +347,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159196C82952FAA100FBB86B /* AddOtp.swift in Sources */,
 				15F7E52829526F2700C32E6E /* ContentView.swift in Sources */,
+				159196C52952FA3600FBB86B /* Debug.swift in Sources */,
+				159196CB2952FF5200FBB86B /* Model.swift in Sources */,
 				55D3A8A6286F418B00E76BE8 /* OtpRow.swift in Sources */,
 				55D3A875286F38E000E76BE8 /* HiOtpApp.swift in Sources */,
 				55899C7D2870202400540647 /* OtpList.swift in Sources */,
 				5544EFD5287305AB00F12D37 /* Setting.swift in Sources */,
 				15988D0B294FA26D00A497FD /* Privacy.swift in Sources */,
-				55899C8828702C3200540647 /* HiOTP.xcdatamodeld in Sources */,
 				5544EFD628731C6400F12D37 /* HiOTP.xcdatamodeld in Sources */,
 				55899C8028702BAD00540647 /* Persistence.swift in Sources */,
 			);
@@ -351,6 +370,18 @@
 			targetProxy = 55D3A87D286F38E100E76BE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		159196BE2952EFD600FBB86B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				159196BD2952EFD600FBB86B /* en */,
+				159196BF2952EFDD00FBB86B /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		55217EA3286F30D700086016 /* Debug */ = {
@@ -716,16 +747,6 @@
 				55217E99286F30D600086016 /* HiOTP.xcdatamodel */,
 			);
 			currentVersion = 55217E99286F30D600086016 /* HiOTP.xcdatamodel */;
-			path = HiOTP.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		55899C8528702C3200540647 /* HiOTP.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				55899C8628702C3200540647 /* HiOTP.xcdatamodel */,
-			);
-			currentVersion = 55899C8628702C3200540647 /* HiOTP.xcdatamodel */;
 			path = HiOTP.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
