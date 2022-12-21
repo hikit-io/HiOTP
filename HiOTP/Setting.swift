@@ -30,7 +30,6 @@ struct Setting: View {
                 }.buttonStyle(.plain)
             }
             Section(header: Text("Info")){
-                
                 HStack{
                     Text("版本")
                     Spacer()
@@ -44,13 +43,22 @@ struct Setting: View {
                 }
             }
         }
-#endif
-#if os(macOS)
+        
+#elseif os(macOS)
         TabView {
             Toggle("在状态栏中显示", isOn: $showMenuBarExtra)
                 .tabItem {
                     Label("通用", systemImage: "circle")
                 }
+        }
+#else
+        Form{
+            NavigationLink("隐私协议") {
+                Privacy()
+            }
+            NavigationLink("版权声明") {
+                Privacy()
+            }
         }
 #endif
     }

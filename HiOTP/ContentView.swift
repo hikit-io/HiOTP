@@ -29,24 +29,14 @@ struct ContentView: View {
     @State private var scanResult = true
     @State private var showAlert = false
     
-    
-    let listStyle = {
-        #if os(iOS)
-            SidebarListStyle()
-        #elseif os(watchOS)
-            DefaultListStyle()
-        #endif
-    }()
-    
     var body: some View {
-#if os(iOS) || os(watchOS)
+#if os(iOS)
         NavigationStack{
             OtpList(onItemClick: {
                 showToast = true
             })
             .navigationTitle("Hi OTP")
             .navigationBarTitleDisplayMode(.inline)
-            .listStyle(listStyle)
 #if os(iOS)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -70,7 +60,7 @@ struct ContentView: View {
         .toast(isPresenting: $showToast) {
             AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
         }
-
+        
         .sheet(isPresented: $showScan) {
             NavigationStack{
                 CodeScannerView(codeTypes: [.qr], scanMode: .continuous,manualSelect: true, showViewfinder: true, simulatedData: "Paul Hudson") { response in
@@ -111,6 +101,18 @@ struct ContentView: View {
             OtpMain()
         }).toast(isPresenting: $showToast) {
             AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
+        }
+#else
+        NavigationStack{
+            TabView {
+                OtpList(onItemClick: {
+                    showToast = true
+                })
+                .navigationTitle("Hi OTP")
+                Setting()
+                    .navigationTitle("Hi OTP")
+            }.tabViewStyle(.page)
+            
         }
 #endif
     }

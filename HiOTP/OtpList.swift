@@ -164,7 +164,7 @@ struct OtpList: View {
                         .resizable()
                         .scaledToFit()
                         .navigationTitle(Text("二维码"))
-                        .frame(minWidth: 200,minHeight: 200)
+                        .frame(minWidth: 100,minHeight: 100)
                 })
             )
 #else
@@ -172,7 +172,7 @@ struct OtpList: View {
                 Image
                     .resizable()
                     .scaledToFit()
-                    .frame(minWidth: 200,minHeight: 200)
+                    
             )
 #endif
         }
