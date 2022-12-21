@@ -8,6 +8,24 @@
 import SwiftUI
 import CoreData
 
+#if canImport(UIKit)
+import UIKit
+#endif
+
+
+#if canImport(AppKit)
+import AppKit
+#endif
+
+
+#if canImport(CoreImage)
+import CoreImage
+import CoreImage.CIFilterBuiltins
+#endif
+
+import EFQRCode
+
+
 struct OtpList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -22,27 +40,99 @@ struct OtpList: View {
     // timer
     private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    @State var tick:Int64 = 0;
+    @State var tick:Int64 = 0
+    
+    @State var showQrSheet = false
+    @State var qrSheetData = ""
     
     init(onItemClick:@escaping ()->Void) {
         self.onItemClick = onItemClick
     }
     
+    let listColor = {
+#if os(iOS)
+        Color(uiColor: .tertiarySystemBackground)
+#elseif os(macOS)
+        Color(nsColor: .textBackgroundColor)
+#else
+        Color(.darkGray)
+#endif
+    }()
+    
+    struct BottomBorder: Shape {
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            
+            path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+            
+            path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+            
+            return path
+        }
+    }
+    
+#if os(iOS)
+    //        let listColor = Color(uiColor: .tertiarySystemBackground)
+    let separatorColor = Color(uiColor: .separator)
+    let listStyle:GroupedListStyle = GroupedListStyle()
+#elseif os(macOS)
+    //        let listColor = Color(nsColor: .textBackgroundColor)
+    let separatorColor = Color(nsColor: .systemGray)
+    let listStyle:PlainListStyle = PlainListStyle()
+#else
+    //        let listColor = Color(.black)
+    let separatorColor = Color(uiColor: .darkGray)
+    let listStyle:CarouselListStyle = CarouselListStyle()
+#endif
+    
+    
+    func listRowBackground()->some View{
+#if !os(watchOS)
+        Rectangle()
+            .foregroundColor(listColor)
+            .overlay(BottomBorder().stroke(separatorColor,lineWidth: 1))
+#else
+        RoundedRectangle(cornerRadius: 11)
+            .foregroundColor(listColor)
+#endif
+    }
+    
     var body: some View {
+        
         List{
             ForEach(items){otp in
                 OtpRow(otpInfo: otp,tick: $tick) {
                     onItemClick()
                 }
+                .listRowBackground(listRowBackground())
+                .swipeActions(edge: .leading) {
+                    Button {
+                        showQrSheet = true
+                        qrSheetData = otp.secret ?? ""
+                    } label: {
+                        Label("二维码", systemImage: "qrcode")
+                    }.tint(.blue)
+                }
+#if os(macOS)
+                .contextMenu {
+                    Button("设置为主屏", action: {})
+                }
+#endif
+#if os(iOS) || os(macOS)
+                .listRowSeparator(.hidden)
+#endif
             }.onDelete { index in
                 deleteItems(offsets: index)
             }.onReceive(timer) { tim in
                 tick += 1
             }
         }
-#if os(iOS)
-        .listStyle(.sidebar)
-#endif
+        .listStyle(listStyle)
+        .sheet(isPresented: $showQrSheet) {
+            QRCodeImage(data: qrSheetData)
+        }
     }
     
     private func deleteItems(offsets: IndexSet) {
@@ -51,13 +141,43 @@ struct OtpList: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
+    
+    struct QRCodeImage:View{
+        var data:String
+        init(data: String) {
+            self.data = data
+        }
+        var body: some View{
+            guard let cgiImage = EFQRCode.generate(for: self.data) else{
+                return AnyView(EmptyView())
+            }
+            let Image = Image(cgiImage, scale: 1, label: Text("")).interpolation(.none)
+#if !os(watchOS)
+            return AnyView(
+                NavigationStack(root: {
+                    Image
+                        .resizable()
+                        .scaledToFit()
+                        .navigationTitle(Text("二维码"))
+                        .frame(minWidth: 200,minHeight: 200)
+                })
+            )
+#else
+            return AnyView(
+                Image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(minWidth: 200,minHeight: 200)
+            )
+#endif
+        }
+    }
+    
 }
 
 struct OtpList_Previews: PreviewProvider {

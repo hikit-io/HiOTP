@@ -11,6 +11,10 @@ import CoreData
 import AlertToast
 #endif
 
+#if os(iOS)
+import CodeScanner
+#endif
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -21,6 +25,19 @@ struct ContentView: View {
         animation: .default)
     private var otps: FetchedResults<OtpInfo>
     
+    @State private var showScan = false
+    @State private var scanResult = true
+    @State private var showAlert = false
+    
+    
+    let listStyle = {
+        #if os(iOS)
+            SidebarListStyle()
+        #elseif os(watchOS)
+            DefaultListStyle()
+        #endif
+    }()
+    
     var body: some View {
 #if os(iOS) || os(watchOS)
         NavigationStack{
@@ -29,7 +46,8 @@ struct ContentView: View {
             })
             .navigationTitle("Hi OTP")
             .navigationBarTitleDisplayMode(.inline)
-            .listStyle(.sidebar)
+            .listStyle(listStyle)
+#if os(iOS)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink {
@@ -39,17 +57,42 @@ struct ContentView: View {
                     }
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button(action: {
+                        showScan = true
+                    }) {
                         Label("Add", systemImage: "qrcode.viewfinder")
                     }
                 }
             }
-        }.toast(isPresenting: $showToast) {
+#endif
+        }
+#if os(iOS)
+        .toast(isPresenting: $showToast) {
             AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
         }
-        
+
+        .sheet(isPresented: $showScan) {
+            NavigationStack{
+                CodeScannerView(codeTypes: [.qr], scanMode: .continuous,manualSelect: true, showViewfinder: true, simulatedData: "Paul Hudson") { response in
+                    switch response {
+                    case .success(let result):
+                        if result.string != "hh"{
+                            showAlert = true
+                        }else{
+                            showScan = false
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }.navigationTitle(Text("扫描二维码"))
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("二维码有误"),message: Text("asd   "),dismissButton: .cancel())
+            }
+        }
+#endif
 #elseif os(macOS)
-        NavigationSplitView(sidebar: {
+        NavigationSplitView(columnVisibility:.constant(.all),sidebar: {
             List {
                 NavigationLink {
                     OtpList(onItemClick: {
@@ -58,26 +101,18 @@ struct ContentView: View {
                 } label: {
                     Text("Home")
                 }
-                NavigationLink {
-                    Setting()
-                } label: {
-                    Text("Setting")
-                }
             }
+        },content: {
+            OtpList(onItemClick: {
+                showToast = true
+            })
             
-            
-        }, content: {
-            
-        }, detail: {
-            
+        },detail: {
+            OtpMain()
         }).toast(isPresenting: $showToast) {
             AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
         }
-        
 #endif
-        
-        
-        
     }
     
     private func addItem() {

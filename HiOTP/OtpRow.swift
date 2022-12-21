@@ -47,46 +47,69 @@ struct OtpRow: View {
         self.onClick = onClick
     }
     
-    var body: some View {
-        
-        VStack(alignment: .leading){
+    let fontNote = {
+#if !os(watchOS)
+        Font.body
+#else
+        Font.footnote
+#endif
+    }()
+    
+    struct IssuerTime:View{
+        var issuer:String
+        var body: some View{
+#if !os(watchOS)
             HStack{
-                Text(otpInfo.issuer ?? "").font(.title3)
+                Text(issuer).font(.title3)
                 Spacer()
                 Text("2021/02/02 10:48")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
+#else
+            EmptyView()
+#endif
+        }
+        
+    }
+    
+    func copyToPastboard(str:String){
+#if os(iOS)
+        UIPasteboard.general.string = str
+#endif
+#if os(macOS)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(str, forType: .string)
+#endif
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            IssuerTime(issuer: otpInfo.issuer ?? "")
             Text(number)
                 .font(.largeTitle)
                 .foregroundColor(.blue)
             HStack{
                 Text(otpInfo.email ?? "")
+                    .font(fontNote)
                     .foregroundColor(.gray)
                 Spacer()
                 Text(interval.formatted()+"s")
+                    .font(fontNote)
                     .foregroundColor(.gray)
             }
         }
         .contentShape(Rectangle())
-        .padding(.all,5)
         .onTapGesture {
-#if os(iOS)
-            UIPasteboard.general.string = number
-#endif
-#if os(macOS)
-            NSPasteboard.general.clearContents()
-            NSPasteboard.general.setString(number, forType: .string)
-#endif
+            copyToPastboard(str: number)
             self.onClick()
         }.onChange(of: tick) { newValue in
             let now = Int(Date().timeIntervalSince1970)
             number = (self.totp.generate(secondsPast1970: now ))!
             interval = Int(otpInfo.period) - now % Int(otpInfo.period)
         }
-
+        
     }
-    
 }
 //
 //struct OtpRow_Previews: PreviewProvider {

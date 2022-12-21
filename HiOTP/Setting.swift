@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct Setting: View {
+    
+    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
+    
+    
     @State private var onIcloud = false;
     var body: some View {
-        Form{
 #if os(iOS)
+        Form{
             Section(header: Text("Data")){
                 Toggle(isOn: $onIcloud){
                     Label("iCloud同步", systemImage: "icloud")
@@ -25,8 +29,6 @@ struct Setting: View {
                     Label("同步至手表", systemImage: "applewatch")
                 }.buttonStyle(.plain)
             }
-#endif
-            
             Section(header: Text("Info")){
                 
                 HStack{
@@ -42,6 +44,15 @@ struct Setting: View {
                 }
             }
         }
+#endif
+#if os(macOS)
+        TabView {
+            Toggle("在状态栏中显示", isOn: $showMenuBarExtra)
+                .tabItem {
+                    Label("通用", systemImage: "circle")
+                }
+        }
+#endif
     }
     
     func onButton()->Void{
