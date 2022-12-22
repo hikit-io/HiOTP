@@ -109,7 +109,6 @@ struct OtpRow: View {
             self.onClick()
         }.onChange(of: tick) { newValue in
             let diff = newValue - Double(Int64(newValue))
-            print(newValue)
             
             if diff == 0{
                 let now = Int(Date().timeIntervalSince1970)
