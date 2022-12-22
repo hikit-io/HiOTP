@@ -13,6 +13,11 @@ import UIKit
 #endif
 
 struct OtpRow: View {
+    enum OtpRowStyle{
+        case row,main
+    }
+    
+    @State private var selfStyle = OtpRowStyle.row
     
     private var otpInfo:OtpInfo;
     
@@ -33,7 +38,7 @@ struct OtpRow: View {
     
     @Binding private var  tick:Double;
     
-    init(otpInfo: OtpInfo,tick:Binding<Double>,onClick:@escaping ()->Void) {
+    init(otpInfo: OtpInfo,tick:Binding<Double>,style: OtpRowStyle? = .row,onClick:@escaping ()->Void) {
         self.otpInfo = otpInfo
         
         self.secret = (otpInfo.secret ?? "").base32DecodedData ?? Data()
@@ -46,6 +51,8 @@ struct OtpRow: View {
         _number = State(initialValue: (self.totp.generate(secondsPast1970: Int(now)))!)
         
         _tick = tick
+        
+        selfStyle = style ?? .row
         
         self.onClick = onClick
     }
@@ -62,7 +69,7 @@ struct OtpRow: View {
         var issuer:String
         var body: some View{
             HStack{
-
+                
                 Text(issuer).font(.title3)
                 Spacer()
 #if !os(watchOS)
@@ -75,17 +82,25 @@ struct OtpRow: View {
         
     }
     
-    func copyToPastboard(str:String){
-#if os(iOS)
-        UIPasteboard.general.string = str
-#endif
-#if os(macOS)
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(str, forType: .string)
-#endif
+    var body: some View {
+        Group{
+            switch selfStyle{
+            case .row:
+                row()
+            case .main:
+                main()
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            copyToPastboard(str: number)
+            self.onClick()
+        }
+        .onChange(of: tick,perform: update)
     }
     
-    var body: some View {
+    @ViewBuilder
+    public func row() -> some View{
         VStack(alignment: .leading){
             IssuerTime(issuer: otpInfo.issuer ?? "")
             Text(number)
@@ -103,43 +118,46 @@ struct OtpRow: View {
                     .foregroundColor(.gray)
             }
         }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            copyToPastboard(str: number)
-            self.onClick()
-        }.onChange(of: tick) { newValue in
-            let diff = newValue - Double(Int64(newValue))
-            
-            if diff == 0{
-                let now = Int(Date().timeIntervalSince1970)
-                number = (self.totp.generate(secondsPast1970: now ))!
-                interval = Int(otpInfo.period) - now % Int(otpInfo.period)
-            }
-           
-            if interval > 5 {
-                if textColor != .blue{
-                    textColor = .blue
-                }
-                if textOpacity != 1.0 {
-                    textOpacity  = 1
-                }
-            }else{
-                if textColor != .red{
-                    textColor = .red
-                }
-                if diff == 0{
-                    textOpacity = 0.5
-                }else{
-                    textOpacity = 1
-                }
-//                if !(interval % 2 == 0 ){
-//                    textOpacity = 0.5
-//                }else{
-//                    textOpacity = 1
-//                }
-            }
+    }
+    
+    @ViewBuilder
+    public func main()->some View{
+        VStack{
+            Text(number)
+                .font(Font.custom("", size: 48))
+                .foregroundColor(textColor)
+                .opacity(textOpacity)
+                .animation(.linear, value: textOpacity)
+        }
+    }
+    
+    
+    func update(newTick:Double){
+        let diff = newTick - Double(Int64(newTick))
+        
+        if diff == 0{
+            let now = Int(Date().timeIntervalSince1970)
+            number = (self.totp.generate(secondsPast1970: now ))!
+            interval = Int(otpInfo.period) - now % Int(otpInfo.period)
         }
         
+        if interval > 5 {
+            if textColor != .blue{
+                textColor = .blue
+            }
+            if textOpacity != 1.0 {
+                textOpacity  = 1
+            }
+        }else{
+            if textColor != .red{
+                textColor = .red
+            }
+            if diff == 0{
+                textOpacity = 0.5
+            }else{
+                textOpacity = 1
+            }
+        }
     }
 }
 //
@@ -177,3 +195,4 @@ struct OtpDetail:View{
         Text(verbatim: otp.email ?? "")
     }
 }
+

@@ -23,5 +23,6 @@ qrcode = "二维码";
 nav_home = "主页";
 
 ctx_menu_as_main_screen = "设置为主屏";
+ctx_menu_bar = "在状态栏中显示";
 
 copy_success = "复制成功";

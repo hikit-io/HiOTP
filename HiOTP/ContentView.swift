@@ -33,7 +33,10 @@ struct ContentView: View {
     @State private var showScan = false
     @State private var scanResult = true
     @State private var showAlert = false
-
+    @State private var tick = 1.0
+    
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    
     
     var body: some View {
 #if os(iOS)
@@ -105,9 +108,18 @@ struct ContentView: View {
             })
             
         },detail: {
-            OtpMain()
+            Group{
+                if let otp = otps.first{
+                    OtpRow(otpInfo: otp, tick: $tick,style: .main) {
+                        print("main")
+                    }
+                }
+            }
+            
         }).toast(isPresenting: $showToast) {
             AlertToast(displayMode:.alert,type: .regular, title: String(localized: "copy_success"))
+        }.onReceive(timer) { tim in
+            tick += 0.5
         }
 #else
         NavigationStack{
@@ -122,6 +134,8 @@ struct ContentView: View {
         }
 #endif
     }
+    
+  
     
     private func addItem() {
         withAnimation {
@@ -174,5 +188,18 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
+
+
+struct MenuBarContentView:View{
+    var body: some View{
+        Group{
+            OtpList {
+                
+            }
+            .opacity(0.8)
+            .cornerRadius(10)
+        }.padding(.all)
     }
 }

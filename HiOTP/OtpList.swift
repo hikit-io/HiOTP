@@ -115,6 +115,9 @@ struct OtpList: View {
 #if os(macOS)
                 .contextMenu {
                     Button("ctx_menu_as_main_screen", action: {})
+                    Button(action: {}, label: {
+                        Label("ctx_menu_bar", systemImage: "circle")
+                    })
                 }
 #endif
 #if os(iOS) || os(macOS)
@@ -150,12 +153,10 @@ struct OtpList: View {
             self.data = data
         }
         var body: some View{
-            guard let cgiImage = EFQRCode.generate(for: self.data) else{
-                return AnyView(EmptyView())
-            }
-            let Image = Image(cgiImage, scale: 1, label: Text("")).interpolation(.none)
+            
+            if let cgiImage = EFQRCode.generate(for: self.data) {
+                let Image = Image(cgiImage, scale: 1, label: Text("")).interpolation(.none)
 #if !os(watchOS)
-            return AnyView(
                 NavigationStack(root: {
                     Image
                         .resizable()
@@ -163,15 +164,16 @@ struct OtpList: View {
                         .navigationTitle(Text("qrcode"))
                         .frame(minWidth: 100,minHeight: 100)
                 })
-            )
 #else
-            return AnyView(
+                
                 Image
                     .resizable()
                     .scaledToFit()
-                    
-            )
 #endif
+            }else{
+                EmptyView()
+            }
+            
         }
     }
     

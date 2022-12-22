@@ -22,5 +22,6 @@ qrcode = "QRCode";
 nav_home = "Home";
 
 ctx_menu_as_main_screen = "Set to main screen";
+ctx_menu_bar = "Display on menu bar";
 
 copy_success = "Copy success";

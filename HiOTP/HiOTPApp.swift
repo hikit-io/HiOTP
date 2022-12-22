@@ -22,11 +22,12 @@ struct HiOTPApp: App {
         Settings {
             Setting().frame(width: 400,height: 200,alignment: .center)
         }
-        MenuBarExtra(
-            "App Menu Bar Extra", systemImage: "star",isInserted: $showMenuBarExtra){
-                OtpList{}
-            }
-            .menuBarExtraStyle(WindowMenuBarExtraStyle())
+        MenuBarExtra("App Menu Bar Extra", systemImage: "star",isInserted: $showMenuBarExtra){
+            MenuBarContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        }
+        .menuBarExtraStyle(WindowMenuBarExtraStyle())
+        
 #endif
     }
 }
