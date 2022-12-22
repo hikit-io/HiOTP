@@ -28,9 +28,12 @@ struct OtpRow: View {
     
     private var onClick:()->Void
     
-    @Binding private var  tick:Int64;
+    @State private var textColor = Color.blue
+    @State private var textOpacity = 1.0
     
-    init(otpInfo: OtpInfo,tick:Binding<Int64>,onClick:@escaping ()->Void) {
+    @Binding private var  tick:Double;
+    
+    init(otpInfo: OtpInfo,tick:Binding<Double>,onClick:@escaping ()->Void) {
         self.otpInfo = otpInfo
         
         self.secret = (otpInfo.secret ?? "").base32DecodedData ?? Data()
@@ -87,7 +90,9 @@ struct OtpRow: View {
             IssuerTime(issuer: otpInfo.issuer ?? "")
             Text(number)
                 .font(.largeTitle)
-                .foregroundColor(.blue)
+                .foregroundColor(textColor)
+                .opacity(textOpacity)
+                .animation(.linear, value: textOpacity)
             HStack{
                 Text(otpInfo.email ?? "")
                     .font(fontNote)
@@ -103,9 +108,37 @@ struct OtpRow: View {
             copyToPastboard(str: number)
             self.onClick()
         }.onChange(of: tick) { newValue in
-            let now = Int(Date().timeIntervalSince1970)
-            number = (self.totp.generate(secondsPast1970: now ))!
-            interval = Int(otpInfo.period) - now % Int(otpInfo.period)
+            let diff = newValue - Double(Int64(newValue))
+            print(newValue)
+            
+            if diff == 0{
+                let now = Int(Date().timeIntervalSince1970)
+                number = (self.totp.generate(secondsPast1970: now ))!
+                interval = Int(otpInfo.period) - now % Int(otpInfo.period)
+            }
+           
+            if interval > 5 {
+                if textColor != .blue{
+                    textColor = .blue
+                }
+                if textOpacity != 1.0 {
+                    textOpacity  = 1
+                }
+            }else{
+                if textColor != .red{
+                    textColor = .red
+                }
+                if diff == 0{
+                    textOpacity = 0.5
+                }else{
+                    textOpacity = 1
+                }
+//                if !(interval % 2 == 0 ){
+//                    textOpacity = 0.5
+//                }else{
+//                    textOpacity = 1
+//                }
+            }
         }
         
     }

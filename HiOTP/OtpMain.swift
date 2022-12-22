@@ -7,7 +7,19 @@
 
 import SwiftUI
 
+extension OtpRow{
+//    func main()->OtpRow{
+//        guard !modifiers.contains(where: {
+//                if case .color = $0 { return true } else { return false }
+//            }) else { return self }
+//            var text = self
+//            text.modifiers.append(.color(color))
+//            return text
+//    }
+}
+
 struct OtpMain: View {
+    
     var body: some View {
         VStack{
             HStack{

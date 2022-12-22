@@ -15,6 +15,8 @@
 		159196C82952FAA100FBB86B /* AddOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C62952FAA100FBB86B /* AddOtp.swift */; };
 		159196CA2952FF5200FBB86B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C92952FF5200FBB86B /* Model.swift */; };
 		159196CB2952FF5200FBB86B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159196C92952FF5200FBB86B /* Model.swift */; };
+		159196CD2953108300FBB86B /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159196CC2953108300FBB86B /* LocalAuthentication.framework */; };
+		159196CF295310AA00FBB86B /* LocalAuthenticationEmbeddedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159196CE295310AA00FBB86B /* LocalAuthenticationEmbeddedUI.framework */; };
 		15988D0A294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
 		15988D0B294FA26D00A497FD /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D09294FA26D00A497FD /* Privacy.swift */; };
 		15988D0E29508AC100A497FD /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15988D0D29508AC100A497FD /* Export.swift */; };
@@ -78,6 +80,8 @@
 		159196C32952FA3600FBB86B /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		159196C62952FAA100FBB86B /* AddOtp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOtp.swift; sourceTree = "<group>"; };
 		159196C92952FF5200FBB86B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		159196CC2953108300FBB86B /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.1.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
+		159196CE295310AA00FBB86B /* LocalAuthenticationEmbeddedUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthenticationEmbeddedUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.1.sdk/System/Library/Frameworks/LocalAuthenticationEmbeddedUI.framework; sourceTree = DEVELOPER_DIR; };
 		15988D09294FA26D00A497FD /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		15988D0C294FAED900A497FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		15988D0D29508AC100A497FD /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159196CF295310AA00FBB86B /* LocalAuthenticationEmbeddedUI.framework in Frameworks */,
+				159196CD2953108300FBB86B /* LocalAuthentication.framework in Frameworks */,
 				15F7E5252952518000C32E6E /* CoreImage.framework in Frameworks */,
 				15F7E52B29527F7700C32E6E /* EFQRCode in Frameworks */,
 				55786B362872C42900507B8B /* SwiftOTP in Frameworks */,
@@ -182,6 +188,8 @@
 		5544EFD728733AD500F12D37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				159196CE295310AA00FBB86B /* LocalAuthenticationEmbeddedUI.framework */,
+				159196CC2953108300FBB86B /* LocalAuthentication.framework */,
 				15F7E523295250DF00C32E6E /* CoreImage.framework */,
 			);
 			name = Frameworks;

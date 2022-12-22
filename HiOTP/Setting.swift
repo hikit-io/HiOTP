@@ -53,9 +53,13 @@ struct Setting: View {
         
 #elseif os(macOS)
         TabView {
-            Toggle("setting_display_on_menu_bar", isOn: $showMenuBarExtra)
+            Toggle("setting_menu_bar", isOn: $showMenuBarExtra)
                 .tabItem {
                     Label("setting_common", systemImage: "circle")
+                }
+            Privacy()
+                .tabItem{
+                    Label("setting_privacy", systemImage: "privacy")
                 }
         }
 #else

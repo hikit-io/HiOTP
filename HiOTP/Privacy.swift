@@ -6,10 +6,27 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct Privacy: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+//#if os(macOS)
+//        LocalAuthenticationView(
+//            "Continue with Touch ID",
+//            reason: Text("Access sandcastle competition designs")
+//        ) { result in
+//            switch result {
+//            case .success:
+//                print("Authorized")
+//            case .failure(let error):
+//                print("Authorization failed: \(error)")
+//            }
+//        }
+//        .controlSize(.large)
+//#else
+//        EmptyView()
+//#endif
+        EmptyView()
     }
 }
 

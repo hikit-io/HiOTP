@@ -15,8 +15,13 @@ import AlertToast
 import CodeScanner
 #endif
 
+class PathManager:ObservableObject{
+    @Published var path = NavigationPath()
+}
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var path:PathManager = PathManager()
     
     @State private var showToast = false
     
@@ -28,10 +33,11 @@ struct ContentView: View {
     @State private var showScan = false
     @State private var scanResult = true
     @State private var showAlert = false
+
     
     var body: some View {
 #if os(iOS)
-        NavigationStack{
+        NavigationStack(path: $path.path){
             OtpList(onItemClick: {
                 showToast = true
             })
@@ -56,9 +62,10 @@ struct ContentView: View {
             }
 #endif
         }
+        .environmentObject(path)
 #if os(iOS)
         .toast(isPresenting: $showToast) {
-            AlertToast(displayMode:.alert,type: .regular, title: "Copy success")
+            AlertToast(displayMode:.alert,type: .regular, title: String(localized: "copy_success"))
         }
         
         .sheet(isPresented: $showScan) {
@@ -100,7 +107,7 @@ struct ContentView: View {
         },detail: {
             OtpMain()
         }).toast(isPresenting: $showToast) {
-            AlertToast(displayMode:.alert,type: .regular, title: LocalizedStringKey("copy_success"))
+            AlertToast(displayMode:.alert,type: .regular, title: String(localized: "copy_success"))
         }
 #else
         NavigationStack{
@@ -112,7 +119,6 @@ struct ContentView: View {
                 Setting()
                     .navigationTitle("Hi OTP")
             }.tabViewStyle(.page)
-            
         }
 #endif
     }

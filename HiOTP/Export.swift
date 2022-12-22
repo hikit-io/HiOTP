@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct ExportItem: View{
     
@@ -63,6 +64,7 @@ struct ExportItem: View{
 
 struct Export: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var path:PathManager
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \OtpInfo.created, ascending: true)],
@@ -73,30 +75,74 @@ struct Export: View {
     
     @State private var selected:Set<OtpInfo> = Set()
     
+    @State private var authed = false
+    
     var body: some View {
-        List{
-            ForEach(items) { otp in
-                ExportItem(otp: otp) { (otp,checked) in
-                    if checked{
-                        self.selected.insert(otp)
-                    }else{
-                        self.selected.remove(otp)
+        VStack{
+            if authed{
+                List{
+                    ForEach(items) { otp in
+                        ExportItem(otp: otp) { (otp,checked) in
+                            if checked{
+                                self.selected.insert(otp)
+                            }else{
+                                self.selected.remove(otp)
+                            }
+                        }
                     }
                 }
-            }
-        }
-        .toolbar {
-            ToolbarItem {
-                Button(action: exportSelected) {
-                    Text("导出")
+                .toolbar {
+                    ToolbarItem {
+                        Button(action: exportSelected) {
+                            Text("导出")
+                        }
+                    }
+                }
+            }else{
+                Button("Back") {
+                    path.path.removeLast()
                 }
             }
-        }
-        
+        }.onAppear(perform: auth)
     }
     
     func exportSelected(){
         print(self.selected)
+    }
+    
+    func auth(){
+        let ctx = LAContext()
+        var err:NSError?
+        
+        if ctx.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &err){
+            let reason = "Continue"
+            ctx.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { ok, error in
+                if ok{
+                    authed = true
+                }else{
+                    let error = error as! NSError
+                    switch error.code{
+                    case -2:
+                        path.path.removeLast()
+                    default:
+                        path.path.removeLast()
+                    }
+                }
+                print(error as Any)
+            }
+        }
+        if err != nil{
+            if ctx.canEvaluatePolicy(.deviceOwnerAuthentication, error: &err){
+                let reason = "Continue"
+                ctx.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { ok, error in
+                    if ok{
+                        authed = true
+                    }
+                    print(error as Any)
+                }
+            }
+        }
+        
     }
 }
 

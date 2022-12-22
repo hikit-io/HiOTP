@@ -38,9 +38,9 @@ struct OtpList: View {
     // callback
     private var onItemClick:()->Void
     // timer
-    private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private var timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     
-    @State var tick:Int64 = 0
+    @State var tick:Double = 0
     
     @State var showQrSheet = false
     @State var qrSheetData = ""
@@ -123,7 +123,7 @@ struct OtpList: View {
             }.onDelete { index in
                 deleteItems(offsets: index)
             }.onReceive(timer) { tim in
-                tick += 1
+                tick += 0.5
             }
         }
         .listStyle(listStyle)
